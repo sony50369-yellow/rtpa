@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>rt-PA / Alteplase Dosing</title>
+  <meta name="description" content="คำนวณขนาดยา rt-PA (alteplase) — AIS / STEMI / PE / Cathflo — พร้อมอ้างอิง แสดงการคำนวณแบบกางดู">
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="theme-color" content="#c8d7ff">
+  <!-- Social preview -->
+  <meta property="og:title" content="rt-PA / Alteplase Dosing">
+  <meta property="og:description" content="AIS • STEMI • PE • Cathflo — เว็บคำนวณขนาดยาแบบใช้งานง่าย">
+  <meta property="og:image" content="og-image.png">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="appbar">
+  <div class="appbar-inner">
+    <img src="android-chrome-192x192.png" alt="" class="brand-icon">
+    <div>
+      <h1>rt-PA / Alteplase Dosing</h1>
+      <div class="subtitle">AIS • STEMI • PE • Cathflo — ธีมพาสเทล ใช้ได้ทั้งมือถือ/คอม</div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="ais">AIS (Stroke)</button>
+    <button class="tab" data-tab="stemi">STEMI</button>
+    <button class="tab" data-tab="pe">PE</button>
+    <button class="tab" data-tab="cathflo">Cathflo</button>
+  </nav>
+
+  <!-- AIS -->
+  <section id="ais" class="panel active">
+    <h2>AIS (Acute Ischemic Stroke)</h2>
+    <p class="help">ผลลัพธ์อ่านง่าย — ต้องการดูสูตร/การปัดเศษ ให้กด “กางดูการคำนวณ”</p>
+    <form class="grid">
+      <label>อายุ (ปี)
+        <input type="number" id="ais-age" min="0" value="60" inputmode="decimal">
+      </label>
+      <label>น้ำหนัก (กก.)
+        <input type="number" id="ais-weight" min="1" value="70" step="0.1" inputmode="decimal">
+      </label>
+      <label>Regimen
+        <select id="ais-regimen">
+          <option value="std">Standard 0.9 mg/kg (Max 90; bolus 10%)</option>
+          <option value="low">Low dose 0.6 mg/kg (Max 60; bolus 15%)</option>
+        </select>
+      </label>
+      <button type="button" id="ais-calc" class="primary">คำนวณ</button>
+    </form>
+
+    <div id="ais-result" class="result card"></div>
+
+    
+    <details class="howto">
+      <summary>วิธีการผสม/เตรียมยา rt‑PA (Hospital)</summary>
+      <div class="img-wrap"><img src="ais_prep.jpg" alt="วิธีผสมยา rt-PA"></div>
+      <ul class="note">
+        <li>หลีกเลี่ยงการเขย่ารุนแรง — กลิ้งขวดเบา ๆ ให้ยาละลาย</li>
+        <li>เตรียมเป็นความเข้มข้น 1 mg/mL (Actilyse 50 mg → เติม SWFI จนครบ 50 mL)</li>
+      </ul>
+    </details>
+
+    <details class="howto">
+      <summary>แนวทางการทำงานของ รพ. (Stroke fast track)</summary>
+      <div class="img-wrap"><img src="ais_flow.jpg" alt="แนวทางการทำงานของโรงพยาบาล"></div>
+    </details>
+
+    <details class="refs">
+      <summary>References (AIS)</summary>
+      <ul>
+        <li><b>AHA/ASA 2019.</b> Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update to the 2018 Guidelines. <i>Stroke</i> 2019.</li>
+        <li><b>FDA Activase® (alteplase) Prescribing Information.</b> 0.9 mg/kg (สูงสุด 90 mg); 10% bolus + 90% infusion / 60 นาที.</li>
+        <li><b>Yamaguchi T, et al. J-ACT.</b> Thrombolysis with 0.6 mg/kg alteplase. <i>Stroke</i> 2006;37:1810-1815 — ใช้ 0.6 mg/kg (max 60 mg), bolus 15%.</li>
+        <li><b>Anderson CS, et al. ENCHANTED.</b> Low 0.6 vs standard 0.9 mg/kg. <i>NEJM</i> 2016;374:231-241.</li>
+        <li><b>Thai Stroke Guideline</b> — แนวทางสมาคมโรคหลอดเลือดสมองแห่งประเทศไทย/กรมการแพทย์ (ฉบับล่าสุดที่สถาบันใช้งาน).</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- STEMI -->
+  <section id="stemi" class="panel">
+    <h2>STEMI (Fibrinolysis)</h2>
+    <form class="grid">
+      <label>อายุ (ปี)
+        <input type="number" id="stemi-age" min="0" value="60" inputmode="decimal">
+      </label>
+      <label>น้ำหนัก (กก.)
+        <input type="number" id="stemi-weight" min="1" value="70" step="0.1" inputmode="decimal">
+      </label>
+      <label>Regimen
+        <select id="stemi-regimen">
+          <option value="accel">Accelerated 90 นาที — 15 mg bolus → 0.75 mg/kg (≤50 mg) → 0.5 mg/kg (≤35 mg)</option>
+          <option value="3hr">3 ชั่วโมง — 10 mg bolus → 50 mg (60 นาที) → 40 mg (120 นาที)</option>
+        </select>
+      </label>
+      <button type="button" id="stemi-calc" class="primary">คำนวณ</button>
+    </form>
+    <div id="stemi-result" class="result card"></div>
+
+    <details class="refs">
+      <summary>References (STEMI)</summary>
+      <ul>
+        <li><b>ACC/AHA 2025 ACS Guideline.</b> บทบาท fibrinolysis เมื่อ PCI ล่าช้าหรือไม่พร้อม.</li>
+        <li><b>FDA Activase® label.</b> รายละเอียด accelerated (รวม 100 mg/90 นาที) และ 3-hour (รวม 100 mg/3 ชม.).</li>
+        <li><b>Thai ACS/STEMI Guideline.</b> แนวทางประเทศไทย (สมาคมแพทย์โรคหัวใจฯ/เครือข่าย STEMI) ฉบับล่าสุด.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- PE -->
+  <section id="pe" class="panel">
+    <h2>Pulmonary Embolism (Systemic thrombolysis)</h2>
+    <form class="grid">
+      <label>อายุ (ปี)
+        <input type="number" id="pe-age" min="0" value="60" inputmode="decimal">
+      </label>
+      <label>น้ำหนัก (กก.)
+        <input type="number" id="pe-weight" min="1" value="70" step="0.1" inputmode="decimal">
+      </label>
+      <label>Regimen
+        <select id="pe-regimen">
+          <option value="pe100">100 mg / 2 ชั่วโมง</option>
+          <option value="pe50">50 mg / 2 ชั่วโมง (reduced)</option>
+        </select>
+      </label>
+      <button type="button" id="pe-calc" class="primary">คำนวณ</button>
+    </form>
+    <div id="pe-result" class="result card"></div>
+
+    <details class="refs">
+      <summary>References (PE)</summary>
+      <ul>
+        <li><b>ESC 2019 Guideline (Acute PE).</b> ชี้บ่งใช้ systemic thrombolysis ใน massive PE/hemodynamic instability.</li>
+        <li><b>AHA Scientific Statements on PE.</b> ลดขนาด 50 mg/2 ชม. อาจพิจารณาในผู้ป่วยเสี่ยงเลือดออกสูง.</li>
+        <li><b>FDA Activase® label.</b> วิธีเตรียมยาและการกลับเข้าสู่ยาต้านการแข็งตัว.</li>
+        <li><b>Thai PE Guidance.</b> แนวทางประเทศไทย (ฉบับล่าสุด).</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- Cathflo -->
+  <section id="cathflo" class="panel">
+    <h2>Cathflo® (alteplase 2 mg) – ล้างสาย CVAD อุดตัน</h2>
+    <form class="grid">
+      <label>อายุ (ปี)
+        <input type="number" id="cf-age" min="0" value="8" inputmode="decimal">
+      </label>
+      <label>น้ำหนัก (กก.)
+        <input type="number" id="cf-weight" min="1" value="25" step="0.1" inputmode="decimal">
+      </label>
+      <label>ปริมาตรลูเมน (mL) — ใช้เมื่อ &lt;30 กก.
+        <input type="number" id="cf-lumen" min="0" value="1.5" step="0.1" inputmode="decimal">
+      </label>
+      <label>จำนวนลูเมน
+        <input type="number" id="cf-lumens" min="1" value="1" step="1" inputmode="numeric">
+      </label>
+      <button type="button" id="cf-calc" class="primary">คำนวณ</button>
+    </form>
+    <div id="cf-result" class="result card"></div>
+
+    <details class="refs">
+      <summary>References (Cathflo)</summary>
+      <ul>
+        <li><b>FDA Cathflo® (alteplase) label.</b> ≥30 กก.: 2 mg/2 mL ต่อหนึ่งลูเมน; &lt;30 กก.: 110% ของปริมาตรลูเมน (สูงสุด 2 mg/2 mL).</li>
+        <li><b>Manufacturer guidance.</b> วิธี instill, dwell 30–120 นาที, ทำซ้ำได้ 1 ครั้งหากยังไม่เปิด.</li>
+      </ul>
+    </details>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>© 2025 ภก.กันตพงศ์ วงศ์เอนกเกษม • ปัด mg ทศนิยม 1 ตำแหน่ง — <b>ปัด bolus ก่อน</b> • Actilyse 50 mg/50 mL</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

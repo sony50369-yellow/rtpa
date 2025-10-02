@@ -1,0 +1,36 @@
+/* Pastel theme + responsive */
+:root{
+  --bg:#fff8e7; --card:#ffffff; --ink:#1f2937; --muted:#5b6779;
+  --brand:#9fd7c6; --accent:#c8d7ff; --ring:rgba(100,100,200,.25);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+.container{max-width:1000px;margin:96px auto 40px;padding:0 16px}
+.appbar{position:fixed;top:0;left:0;right:0;background:linear-gradient(90deg,var(--accent),var(--brand));box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:10}
+.appbar-inner{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.appbar h1{margin:0;font-size:20px}
+.brand-icon{width:32px;height:32px;border-radius:8px}
+.subtitle{font-size:13px;color:#253047;opacity:.9}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.tab{border:0;background:var(--card);padding:10px 14px;border-radius:999px;box-shadow:0 1px 0 rgba(0,0,0,.06);cursor:pointer}
+.tab.active{background:var(--brand);font-weight:600}
+.panel{display:none;background:var(--card);border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.panel.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:8px 0 14px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600}
+input,select{padding:10px;border-radius:10px;border:1px solid #dcdcdc;background:#fff;outline:none}
+input:focus,select:focus{box-shadow:0 0 0 4px var(--ring)}
+.primary{background:var(--accent);border:0;padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer}
+.help{color:var(--muted);margin-top:-2px}
+.card{border:1px solid #eee;border-radius:12px;padding:12px;background:#fff}
+.result .row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dotted #eee}
+.result .row:last-child{border-bottom:0}
+.refs{margin-top:12px}
+.footer{padding:24px;text-align:center;color:var(--muted)}
+@media (max-width:480px){ .container{padding:0 12px} }
+
+/* AIS images */
+.img-wrap{margin:8px 0;border:1px solid #eee;border-radius:10px;overflow:hidden;background:#fff}
+.img-wrap img{display:block;width:100%;height:auto}
+.howto{margin-top:10px}
+.howto summary{cursor:pointer}
